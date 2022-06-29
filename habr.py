@@ -1,6 +1,6 @@
 import re
 from general_functions import get_soup
-
+from decorator import Logger
 
 class Habr():
     def __init__(self, KEYWORDS, HEADERS):
@@ -17,6 +17,7 @@ class Habr():
         body = soup.find(xmlns='http://www.w3.org/1999/xhtml').text
         return body
 
+    @Logger('logger.log')
     def find_articles(self):
         articles = self.get_new_articles()
         for article in articles:
